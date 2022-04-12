@@ -1,0 +1,19 @@
+.main-section-builder{
+
+display: grid;
+grid-template-columns: 50%,50%;
+ gap: 2rem ;
+
+}
+
+.main-section-builder .col-1{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/2;
+}
+
+.main-section-builder .col-2{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2/2;
+}

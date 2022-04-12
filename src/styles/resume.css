@@ -1,0 +1,28 @@
+
+
+
+.resume{
+    --page-proportion-a4: 1.4142;
+    --page-w:37rem;
+    min-width:  var(--page-w);
+    min-height: calc(var(--page-w)*var(--page-proportion-a4));
+    max-width: var(--page-w);
+    max-height: calc(var(--page-w)*var(--page-proportion-a4));
+    background-color: white;
+
+    display: grid;
+
+   
+   
+    
+}
+
+
+
+.zone{
+    border: 2px solid;
+    border-color: rgb(168, 168, 168);
+}
+.zone:hover{
+    background-color: brown;
+}
