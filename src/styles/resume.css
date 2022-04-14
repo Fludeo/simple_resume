@@ -9,8 +9,9 @@
     max-width: var(--page-w);
     max-height: calc(var(--page-w)*var(--page-proportion-a4));
     background-color: white;
-
+    padding: 4rem;
     display: grid;
+    
 
    
    

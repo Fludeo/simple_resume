@@ -1,10 +1,10 @@
-.container{
+.layout-creator{
   display: flex;
   flex-direction: column-reverse;
   gap: 0.2rem;
 }
 
-.layout-creator{
+.layout-creator__container{
 
 
   --page-proportion-a4: 1.4142;
@@ -21,6 +21,32 @@
 
 }
 
+.area__copy-icon{
+
+  color: #272727;
+
+}
+.area__copy-icon--hover:hover{
+  
+  color: #fdfdfd;
+
+}
+.area__copy-icon--active{
+  
+  color: #fdfdfd;
+
+}
+.area__paste-icon{
+
+  color: #272727;
+
+}
+.area__paste-icon--hover:hover{
+  
+  color: #fdfdfd;
+
+}
+
 .area{
   border: 2px solid;
   display: flex;
@@ -30,8 +56,8 @@
   width: 100%;
   height: 100%;
 }
-.area input {
-  width: 2rem;
+.area__area-name {
+  width: 4rem;
 }
 
 .edit-box {

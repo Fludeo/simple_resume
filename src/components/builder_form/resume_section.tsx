@@ -32,19 +32,20 @@ function ResumeSection({ section }:props) {
           <div className="section-item" key={index}>
             <div className="section-item__item-container">
               <h4 className="section-item__item">{item.item}</h4>
+              {item.location !== '' && <p className="section-item__location">{item.location}</p>}
             </div>
-            <div className="section-item__location-container">
-              <p className="section-item__location">{item.location}</p>
-            </div>
+
             <div className="section-item__text-container">
-              <p className="section-item__text">{item.text}</p>
+              {item.text !== '' && <p className="section-item__text">{item.text}</p>}
             </div>
             <div className="section-item__date-container">
+              {(item.dateRange.from !== '' || item.dateRange.to !== '') && (
               <p className="section-item__date">
                 {item.dateRange.from}
-
+                -
                 {item.dateRange.to}
               </p>
+              )}
             </div>
 
           </div>

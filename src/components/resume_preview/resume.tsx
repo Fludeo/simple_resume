@@ -25,10 +25,15 @@ export function Resume({ state }:props) {
   return (
     <div
       className="resume"
-      style={{ gridTemplateAreas: state.layout?.template, gridTemplateColumns: `repeat(${state.layout?.columns},1fr)`, gridTemplateRows: `repeat(${state.layout?.rows},1fr)` }}
+      style={{
+        gridTemplateAreas: state.layout?.template,
+        gridTemplateColumns: `repeat(${state.layout?.columns},1fr)`,
+        gridTemplateRows: `repeat(${state.layout?.rows},1fr)`,
+
+      }}
     >
       {[...new Set(state.layout.areas)].map((zone, index:number) => (
-        <div key={`${index}`} style={{ gridArea: `_${zone}` }}>
+        <div key={`${index}`} style={{ gridArea: `_${zone}`, overflow: 'hidden' }}>
 
           {`_${zone}` === `${state.mainSection.area}` && <MainSection mainSection={state.mainSection} />}
 

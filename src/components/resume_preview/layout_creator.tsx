@@ -4,7 +4,7 @@
 /* eslint-disable react/no-array-index-key */
 import { setgid } from 'process';
 import React, { useEffect, useReducer, useState } from 'react';
-
+import { BiCopyAlt, BiPaste } from 'react-icons/bi';
 import '../../styles/layout_creator.css';
 
 type IState ={
@@ -96,15 +96,29 @@ export default function LayoutCreator({
   layout, UpdateLayout, setEditing,
 }:props) {
   const [state, dispatch] = useReducer(layoutCreatorReducer, {});
+  const [copiedArea, setCopiedArea] = useState<string|null>(null);
+  const CopyAreaName = (area:string) => {
+    setCopiedArea(area);
+  };
+  const PasteAreaName = (area:string) => {
+  };
+
+  const updateArea = (index:number, value:string):void => {
+    const newAreas = state.areas.map((item: string, jindex: number) => {
+      if (jindex === index) { item = value; }
+      return item;
+    });
+    dispatch({ type: 'UPDATE_AREA_NAME', payload: newAreas });
+  };
 
   useEffect(() => {
     dispatch({ type: 'INIT', payload: layout });
   }, [layout]);
 
   return (
-    <div className="container">
+    <div className="layout-creator">
       <div
-        className="layout-creator"
+        className="layout-creator__container"
         style={{
           gridTemplateAreas: state.template,
           gridTemplateColumns: `repeat(${state?.columns},1fr)`,
@@ -117,17 +131,19 @@ export default function LayoutCreator({
             className="area"
             style={{ gridArea: `_${area}` }}
           >
+            <BiCopyAlt
+              onClick={() => CopyAreaName(area)}
+              className={copiedArea === area ? 'area__copy-icon--active' : 'area__copy-icon area__copy-icon--hover'}
+            />
+
             <input
+              key={`_${index}1`}
+              className="area__area-name"
               type="text"
-              onChange={(e) => {
-                const newAreas = state.areas.map((item: string, jindex: number) => {
-                  if (jindex === index) { item = e.currentTarget.value; }
-                  return item;
-                });
-                dispatch({ type: 'UPDATE_AREA_NAME', payload: newAreas });
-              }}
+              onChange={(e) => { updateArea(index, e.currentTarget.value); }}
               defaultValue={`${area}`}
             />
+            <BiPaste onClick={() => copiedArea !== null && updateArea(index, copiedArea)} className="area__paste-icon area__paste-icon--hover" />
           </div>
         ))}
       </div>
