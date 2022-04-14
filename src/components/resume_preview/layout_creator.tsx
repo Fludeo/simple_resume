@@ -22,14 +22,15 @@ type ILayout ={
   style:any
 }
 type props ={
-  layout : ILayout,
+  layout : ILayout
   UpdateLayout:(payload:any)=>any
+  setEditing: (b:boolean)=>void
 }
 function PrintTemplate(_layout:IState):any {
   let result:string = '"';
   let count:number = 1;
   for (let i = 0; i < _layout.areas.length; i += 1) {
-    result += ` _${_layout.areas[i].content}`;
+    result += ` _${_layout.areas[i]}`;
     if (count > _layout.columns - 1) {
       result += '"\n"';
       count = 0;
@@ -46,7 +47,7 @@ function calculateTemplate(col:number, row:number):any {
   let count:number = 0;
   for (let i = 0; i < row; i += 1) {
     for (let j = 0; j < col; j += 1) {
-      array.push({ content: `a${count}` });
+      array.push(`area${count}`);
       count += 1;
     }
   }
@@ -92,7 +93,7 @@ function layoutCreatorReducer(state:IState, action:any):any {
 }
 
 export default function LayoutCreator({
-  layout, UpdateLayout,
+  layout, UpdateLayout, setEditing,
 }:props) {
   const [state, dispatch] = useReducer(layoutCreatorReducer, {});
 
@@ -110,33 +111,35 @@ export default function LayoutCreator({
           gridTemplateRows: `repeat(${state?.rows},1fr)`,
         }}
       >
-        {state?.areas?.map((area: { content: string; }, index: number) => (
+        {state?.areas?.map((area: string, index: number) => (
           <div
-            key={`_${area.content}${index}`}
+            key={`_${index}`}
             className="area"
-            style={{ gridArea: `_${area.content}` }}
+            style={{ gridArea: `_${area}` }}
           >
             <input
               type="text"
               onChange={(e) => {
-                const newAreas = state.areas.map((item: { content: string; }, jindex: number) => {
-                  if (jindex === index) { item.content = e.currentTarget.value; }
+                const newAreas = state.areas.map((item: string, jindex: number) => {
+                  if (jindex === index) { item = e.currentTarget.value; }
                   return item;
                 });
                 dispatch({ type: 'UPDATE_AREA_NAME', payload: newAreas });
               }}
-              defaultValue={`${area.content}`}
+              defaultValue={`${area}`}
             />
           </div>
         ))}
       </div>
-      <div className="inputs">
-        <p>columns</p>
-        <input onChange={(e) => dispatch({ type: 'UPDATE_COLUMNS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.columns} />
-        <p>rows</p>
-        <input onChange={(e) => dispatch({ type: 'UPDATE_ROWS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.rows} />
-        <button type="button" onClick={() => UpdateLayout(state)}>Save</button>
-        <button type="button">Cancel</button>
+      <div className="edit-box">
+        <div className="inputs">
+          <p>columns</p>
+          <input onChange={(e) => dispatch({ type: 'UPDATE_COLUMNS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.columns} />
+          <p>rows</p>
+          <input onChange={(e) => dispatch({ type: 'UPDATE_ROWS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.rows} />
+        </div>
+        <button type="button" onClick={() => { UpdateLayout(state); setEditing(false); }}>Save</button>
+        <button type="button" onClick={() => setEditing(false)}>Cancel</button>
       </div>
     </div>
   );

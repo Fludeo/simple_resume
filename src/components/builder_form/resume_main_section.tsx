@@ -1,21 +1,24 @@
 import React from 'react';
 
+type IMainSection = {
+  area:string
+  name:string
+  lastName:string
+  job:string
+
+}
 type props ={
-    name:string,
-    lastName:string,
-    job:string,
-    area:string
+    mainSection:IMainSection
 }
 
 function MainSection({
-  name, lastName, job, area,
+  mainSection,
 }:props) {
-  console.log(area);
   return (
-    <div style={{ gridArea: area }}>
+    <div style={{ gridArea: mainSection.area }}>
 
-      <h2>{`${name} ${lastName}`}</h2>
-      <h3>{job}</h3>
+      <h2>{`${mainSection.name} ${mainSection.lastName}`}</h2>
+      <h3>{mainSection.job}</h3>
 
     </div>
   );

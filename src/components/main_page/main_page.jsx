@@ -8,17 +8,29 @@ import { BuilderForm } from '../builder_form/builder_form.tsx';
 
 const initialState = {
   mainSection: {
-    name: 'Leandro Nicolás',
-    lastName: 'Medina',
-    job: 'Fullstack dev',
-    area: '',
+    name: 'Name',
+    lastName: 'Lastname',
+    job: 'Job',
+    area: '_area',
   },
-  sections: [{}],
+  sections: [{
+    area: '_area',
+    title: 'Title',
+    items: [{
+      item: 'Item1',
+      text: 'Subtext',
+      location: '',
+      dateRange: {
+        from: '',
+        to: '',
+      },
+    }],
+  }],
   layout: {
-    template: '.',
+    template: '"_area"',
     columns: 1,
     rows: 1,
-    areas: [{ content: 'a' }],
+    areas: ['_area'],
   },
 };
 
@@ -26,9 +38,17 @@ const resumeReducer = (state, action) => {
   let newState = {};
   switch (action.type) {
     case 'ADD_SECTION':
-      return null;
-    case 'UPDATE_SECTION':
+      newState = { ...state, sections: action.payload };
+      console.log(newState);
+      return newState;
+    case 'UPDATE_MAIN_SECTION':
+      console.log(newState);
       newState = { ...state, mainSection: action.payload };
+      return newState;
+    case 'UPDATE_SECTION':
+
+      newState = { ...state, sections: action.payload };
+      console.log(newState);
       return newState;
     case 'UPDATE_LAYOUT':
 
@@ -45,7 +65,12 @@ export function MainPage() {
 
   return (
     <div className="main-page">
-      <BuilderForm state={state} UpdateField={((payload) => dispatch({ type: 'UPDATE_SECTION', payload }))} AddSection={(payload) => dispatch({ type: 'ADD_SECTION', payload })} />
+      <BuilderForm
+        state={state}
+        UpdateSection={((payload) => dispatch({ type: 'UPDATE_SECTION', payload }))}
+        UpdateMainSection={((payload) => dispatch({ type: 'UPDATE_MAIN_SECTION', payload }))}
+        AddSection={(payload) => dispatch({ type: 'ADD_SECTION', payload })}
+      />
       <ResumePreview state={state} UpdateLayout={((payload) => dispatch({ type: 'UPDATE_LAYOUT', payload }))} />
     </div>
   );

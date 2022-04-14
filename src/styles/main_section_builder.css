@@ -1,19 +1,117 @@
 .main-section-builder{
 
 display: grid;
-grid-template-columns: 50%,50%;
- gap: 2rem ;
+gap: 1rem;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 5rem 5rem 5rem;
+grid-template-areas:"title area"  
+                    "name lastname"
+                    "job buttons"
+ 
 
 }
-
-.main-section-builder .col-1{
+.main-section-builder__title-container{
     display: flex;
     flex-direction: column;
-    grid-column: 1/2;
+    justify-content: space-between;
+    grid-area: title;
+}
+.main-section-builder__title{
+
 }
 
-.main-section-builder .col-2{
+
+
+
+.main-section-builder__name-container{
     display: flex;
     flex-direction: column;
-    grid-column: 2/2;
+    justify-content: space-between;
+    grid-area: name;
 }
+
+.main-section-builder__name-label{
+    display: block;
+
+}
+
+.main-section-builder__name{
+    display: block;
+
+}
+
+
+
+
+
+
+
+.main-section-builder__lastname-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: lastname;
+  }
+
+.main-section-builder__lastname-label{
+    display: block;
+}
+.main-section-builder__lastname{
+    display: block;
+
+}
+
+
+
+
+
+
+
+.main-section-builder__job-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: job;
+}
+
+.main-section-builder__job-label{
+    display: block;
+}
+.main-section-builder__job{
+    display: block;
+
+}
+
+
+
+
+
+.main-section-builder__area-container{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: right;
+    grid-area: area;
+}
+.main-section-builder__area-label{
+    display: block;
+}
+.main-section-builder__area-select{
+    height: 1.5rem;
+    width: 4rem;
+}
+
+
+
+
+
+
+
+.main-section-builder__buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: buttons;
+}
+
+

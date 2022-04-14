@@ -1,19 +1,129 @@
 .section-builder{
+   
 
+  
+    
+    }
+.section-builder__title {
+  
+          
+}
+.section-builder__title--edit {
+ 
+        
+ 
+        
+}
+
+
+.section-builder__items{
+   display: flex;
+   flex-direction: column;
+}
+    
+.item{  
     display: grid;
-    grid-template-columns: 50%,50%;
-     gap: 2rem ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5rem 5rem 5rem;
     
-    }
+    grid-template: "item location" 
+                  "description description" 
+                  "date date" 
+}
+
+
+
+.item__item-container{
+    grid-area: item;
+}
+.item__item-label{
+    display: block;
     
-    .section-builder .col-1{
-        display: flex;
-        flex-direction: column;
-        grid-column: 1/2;
-    }
+    height: 1.5rem;
+}
+.item__item{
+    display: block;
+  
+    height: 1.5rem;
+}
+
+
+
+
+
+.item__location-container{
+    grid-area: location;
+}
+.item__location-label{
+    display: block;
     
-    .section-builder .col-2{
-        display: flex;
-        flex-direction: column;
-        grid-column: 2/2;
-    }
+}
+.item__location{
+  display: block;
+
+    height: 1.5rem;
+}
+
+
+
+
+
+
+
+
+.item__description-container{
+    grid-area: description;
+}
+.item__description-label{
+  display: block;
+
+}
+.item__description{ 
+    display: block;
+    width: 35rem;
+    height: 2rem;
+    
+}
+
+
+
+
+
+
+
+
+
+.item__date-container{
+    grid-area: date;
+    display: flex;
+    flex-direction: column;
+}
+.item__date-label{
+    display: block;
+ 
+}
+.item__date-input-wrapper{
+    display: flex;
+    flex-direction: row;
+}   
+.item__date-from{
+    width: 5rem;
+    height: 1.5rem;
+}
+.item__date-to{
+    width: 5rem;
+    height: 1.5rem;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+

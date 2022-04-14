@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -6,6 +7,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/resume.css';
 import MainSection from '../builder_form/resume_main_section';
+import ResumeSection from '../builder_form/resume_section';
 
 type props = {
   state:any
@@ -20,24 +22,24 @@ type ILayout={
 }
 
 export function Resume({ state }:props) {
-  const [resumeData, setResumeData] = useState<any>({}as any);
-  const [style, setStyle] = useState<ILayout>({} as ILayout);
-  useEffect(() => {
-    setResumeData(state.mainSection);
-    setStyle(state.layout);
-  }, [state.mainSection, state.layout]);
-
   return (
     <div
       className="resume"
-      style={{ gridTemplateAreas: style?.template, gridTemplateColumns: `repeat(${style?.columns},1fr)`, gridTemplateRows: `repeat(${style?.rows},1fr)` }}
+      style={{ gridTemplateAreas: state.layout?.template, gridTemplateColumns: `repeat(${state.layout?.columns},1fr)`, gridTemplateRows: `repeat(${state.layout?.rows},1fr)` }}
     >
-      <MainSection
-        area={resumeData.area}
-        name={resumeData.name}
-        lastName={resumeData.lastName}
-        job={resumeData.job}
-      />
+      {[...new Set(state.layout.areas)].map((zone, index:number) => (
+        <div key={`${index}`} style={{ gridArea: `_${zone}` }}>
+          {state.sections.map((section:any, sectionIndex:number) => (`_${zone}` === `${section.area}`
+            && (
+            <ResumeSection
+              key={sectionIndex}
+              section={section}
+            />
+            )
+          ))}
+        </div>
+      ))}
+
     </div>
   );
 }

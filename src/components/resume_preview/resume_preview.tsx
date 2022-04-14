@@ -18,14 +18,27 @@ export function ResumePreview({ state, UpdateLayout }:props) {
   }, [state.layout]);
   return (
     <div className="resume-preview">
-      {editing ? (
-        <LayoutCreator
-          UpdateLayout={(payload) => UpdateLayout(payload)}
-          layout={state.layout}
-        />
-      )
-        : <Resume state={state} />}
-      <button onClick={() => setEditing(!editing)} type="button">{editing ? 'Lock layout' : 'Edit layout'}</button>
+      <div className="main-container">
+
+        {!editing && (
+        <div className="top-section">
+          <button onClick={() => setEditing(!editing)} type="button">
+            {editing ? 'Lock layout' : 'Edit layout'}
+          </button>
+
+        </div>
+        )}
+
+        {editing ? (
+          <LayoutCreator
+            setEditing={setEditing}
+            UpdateLayout={(payload) => UpdateLayout(payload)}
+            layout={state.layout}
+          />
+        )
+          : <Resume state={state} />}
+
+      </div>
     </div>
   );
 }
