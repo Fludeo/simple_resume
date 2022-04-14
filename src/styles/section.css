@@ -1,0 +1,70 @@
+
+section{
+    display: flex;
+    flex-direction: column;
+                          
+}
+.section__title-container{
+
+}
+
+.section__title{
+
+}
+
+
+
+
+
+
+.section__items-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.section-item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2rem 2rem 2rem;
+    grid-template-areas: "item date"
+                          "location location"
+                          "subtext subtext"  
+  
+}
+.section-item__item-container{
+grid-area: item;
+
+}
+.section-item__item{
+
+}
+
+
+
+
+.section-item__location-container{
+    grid-area: location;
+}
+
+.section-item__location{
+    font-size: x-small;
+}
+
+
+
+.section-item__text-container{
+    grid-area: subtext
+}
+.section-item__text{
+
+}
+
+
+.section-item__date-container{
+    grid-area: date;
+}
+.section-item__date{
+
+}

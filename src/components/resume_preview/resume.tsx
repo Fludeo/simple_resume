@@ -29,7 +29,11 @@ export function Resume({ state }:props) {
     >
       {[...new Set(state.layout.areas)].map((zone, index:number) => (
         <div key={`${index}`} style={{ gridArea: `_${zone}` }}>
-          {state.sections.map((section:any, sectionIndex:number) => (`_${zone}` === `${section.area}`
+
+          {`_${zone}` === `${state.mainSection.area}` && <MainSection mainSection={state.mainSection} />}
+
+          {state.sections.map((section:any, sectionIndex:number) => (
+            `_${zone}` === `${section.area}`
             && (
             <ResumeSection
               key={sectionIndex}

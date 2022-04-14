@@ -30,7 +30,7 @@ const initialState = {
     template: '"_area"',
     columns: 1,
     rows: 1,
-    areas: ['_area'],
+    areas: ['area'],
   },
 };
 

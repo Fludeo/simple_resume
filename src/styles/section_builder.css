@@ -1,11 +1,21 @@
 .section-builder{
    
-
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template: "title area" 
+                "items items" 
+                "buttons buttons" 
   
     
     }
+.section-builder__title-container {
+        grid-area: title;
+        display: flex;
+        flex-direction: row;
+                
+      }
 .section-builder__title {
-  
+ 
           
 }
 .section-builder__title--edit {
@@ -14,34 +24,54 @@
  
         
 }
+.section-builder__area-container {
+    grid-area: area;
+            
+  }
+  .section-builder__area-label {
+    
+            
+  }
+  .section-builder__area {
+  
+            
+  }
+
+
+.section-builder__add-item-button-container{
+    grid-area: buttons;
+    display: flex;
+    justify-content: right;
+}
 
 
 .section-builder__items{
+   grid-area: items;
    display: flex;
    flex-direction: column;
 }
     
-.item{  
+.section-builder-item{  
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 5rem 5rem 5rem;
     
     grid-template: "item location" 
                   "description description" 
-                  "date date" 
+                  "date buttons" 
 }
 
 
 
-.item__item-container{
+.section-builder-item__item-container{
     grid-area: item;
 }
-.item__item-label{
+.section-builder-item__item-label{
     display: block;
     
     height: 1.5rem;
 }
-.item__item{
+.section-builder-item__item{
     display: block;
   
     height: 1.5rem;
@@ -51,14 +81,14 @@
 
 
 
-.item__location-container{
+.section-builder-item__location-container{
     grid-area: location;
 }
-.item__location-label{
+.section-builder-item__location-label{
     display: block;
     
 }
-.item__location{
+.section-builder-item__location{
   display: block;
 
     height: 1.5rem;
@@ -71,14 +101,14 @@
 
 
 
-.item__description-container{
+.section-builder-item__description-container{
     grid-area: description;
 }
-.item__description-label{
+.section-builder-item__description-label{
   display: block;
 
 }
-.item__description{ 
+.section-builder-item__description{ 
     display: block;
     width: 35rem;
     height: 2rem;
@@ -93,28 +123,29 @@
 
 
 
-.item__date-container{
+.section-builder-item__date-container{
     grid-area: date;
     display: flex;
     flex-direction: column;
 }
-.item__date-label{
+.section-builder-item__date-label{
     display: block;
  
 }
-.item__date-input-wrapper{
+.section-builder-item__date-input-wrapper{
     display: flex;
     flex-direction: row;
 }   
-.item__date-from{
+.section-builder-item__date-from{
     width: 5rem;
     height: 1.5rem;
 }
-.item__date-to{
+.section-builder-item__date-to{
     width: 5rem;
     height: 1.5rem;
     
 }
+
 
 
 
