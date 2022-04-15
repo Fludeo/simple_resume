@@ -10,6 +10,7 @@
 }
 
 .section__title{
+
 margin: 0;
 padding: 0;
 }
@@ -42,8 +43,9 @@ padding: 0;
 
 }
 .section-item__item{
-    font-size: small;
-    margin-top: 1rem;
+    
+ 
+   
     margin-bottom: 0;
    
 }
@@ -56,7 +58,7 @@ padding: 0;
 }
 
 .section-item__location{
-    font-size: x-small;
+ 
  
 }
 

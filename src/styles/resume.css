@@ -1,20 +1,21 @@
 
+:root{
+    --page-proportion-a4: 1.4142;
+}
 
 
 .resume{
-    --page-proportion-a4: 1.4142;
-    --page-w:37rem;
-    min-width:  var(--page-w);
-    min-height: calc(var(--page-w)*var(--page-proportion-a4));
-    max-width: var(--page-w);
-    max-height: calc(var(--page-w)*var(--page-proportion-a4));
+    
+    --page-w:30vw;
+    width: var(--page-w);
+    height: calc(var(--page-w)*var(--page-proportion-a4));
+    --padding-w:2vw;
+    padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
+  
     background-color: white;
-    padding: 4rem;
+  
     display: grid;
     
-
-   
-   
     
 }
 

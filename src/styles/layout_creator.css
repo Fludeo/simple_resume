@@ -8,13 +8,15 @@
 
 
   --page-proportion-a4: 1.4142;
-    --page-w:37rem;
+   
+    --page-w:30vw;
+    width: var(--page-w);
+    height: calc(var(--page-w)*var(--page-proportion-a4));
+    --padding-w:2vw;
+    padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
 
-    min-width:  var(--page-w);
-    min-height: calc(var(--page-w)*var(--page-proportion-a4));
-    max-width: var(--page-w);
-    max-height: calc(var(--page-w)*var(--page-proportion-a4));
     background-color: rgb(81, 63, 133);
+
     display: grid;
 
   

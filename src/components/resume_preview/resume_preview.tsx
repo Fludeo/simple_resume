@@ -1,8 +1,15 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react/button-has-type */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import '../../styles/resume_preview.css';
-import React, { useEffect, useState } from 'react';
-import { Resume } from './resume';
+import React, {
+  useRef,
+  useEffect, useState,
+} from 'react';
+import { HiOutlineTemplate } from 'react-icons/hi';
+import { useReactToPrint } from 'react-to-print';
+import Resume from './resume';
 import LayoutCreator from './layout_creator';
 
 type props ={
@@ -12,19 +19,22 @@ type props ={
 
 export function ResumePreview({ state, UpdateLayout }:props) {
   const [editing, setEditing] = useState(false);
+  const componentRef = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   useEffect(() => {
 
   }, [state.layout]);
   return (
     <div className="resume-preview">
-      <div className="main-container">
+      <div className="resume-preview__main-container">
 
         {!editing && (
-        <div className="top-section">
-          <button onClick={() => setEditing(!editing)} type="button">
-            {editing ? 'Lock layout' : 'Edit layout'}
-          </button>
+        <div className="resume-preview__top-section ">
+
+          <HiOutlineTemplate className="resume-preview__button-icon resume-preview__button-icon--hover" onClick={() => setEditing(!editing)}> </HiOutlineTemplate>
 
         </div>
         )}
@@ -36,8 +46,8 @@ export function ResumePreview({ state, UpdateLayout }:props) {
             layout={state.layout}
           />
         )
-          : <Resume state={state} />}
-
+          : <Resume ref={componentRef} state={state} />}
+        <button type="button" onClick={handlePrint}>print</button>
       </div>
     </div>
   );

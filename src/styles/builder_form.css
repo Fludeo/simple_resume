@@ -5,5 +5,9 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    width: 40%;
+    height: fit-content;
+    min-height: 100vh;
+    overflow: auto;
     gap: 2rem;
 }

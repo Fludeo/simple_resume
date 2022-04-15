@@ -1,20 +1,23 @@
 .resume-preview{
+    position: absolute;
+    right: 0%;
     display:flex;
-    width: 100%;
+    width: 60%;
     height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+   
+    
 }
-.resume-preview .main-container{
+.resume-preview__main-container{
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     
 }
 
-.top-section{
+.resume-preview__top-section{
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -22,8 +25,18 @@
     
 
 }
-.top-section button{
-    width: 4rem;
-    height: 2rem;
+.resume-preview__button-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.4rem;
+
+    border-radius: .2rem;
+    color:#dedddf ;
+    background-color: var(--color-primary);
+}
+
+.resume-preview__button-icon--hover:hover{
+    background-color: var(--color-secondary);
+    color:#dedddf
 }
 

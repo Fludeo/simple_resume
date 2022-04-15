@@ -4,7 +4,7 @@ import '../../styles/main_page.css';
 import React, { useReducer } from 'react';
 
 import { ResumePreview } from '../resume_preview/resume_preview';
-import { BuilderForm } from '../builder_form/builder_form.tsx';
+import { BuilderForm } from '../builder_form/builder_form';
 
 const initialState = {
   mainSection: {
@@ -34,7 +34,13 @@ const initialState = {
   },
 };
 
-const resumeReducer = (state, action) => {
+type ActionType =
+ |{ type:'ADD_SECTION', payload:any}
+ |{ type:'UPDATE_MAIN_SECTION', payload:any}
+ |{ type: 'UPDATE_SECTION', payload:any}
+ |{ type:'UPDATE_LAYOUT', payload:any}
+
+const resumeReducer:React.Reducer<any, ActionType> = (state, action) => {
   let newState = {};
   switch (action.type) {
     case 'ADD_SECTION':
@@ -56,7 +62,7 @@ const resumeReducer = (state, action) => {
       console.log(newState);
       return newState;
     default:
-      return null;
+      return state;
   }
 };
 
