@@ -1,4 +1,10 @@
 :root{
     --color-primary: #7908fa;
+    --color-low-opacity-primary: #7908fa3b;
     --color-secondary: #44abff;
+    --color-low-opacity-secondary:#44abff41;
+    --text-color-gray-primary: #444444;
+    --text-color-gray-secondary: #7a7a7a;
+
 }
+

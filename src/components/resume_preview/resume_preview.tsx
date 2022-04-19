@@ -46,11 +46,17 @@ export function ResumePreview({ state, UpdateLayout }:props) {
             layout={state.layout}
           />
         )
-          : <Resume ref={componentRef} state={state} />}
+          : (
+            <Resume printable={false} state={state} />
+          ) }
         <button type="button" onClick={handlePrint}>print</button>
+        <div style={{ display: 'none' }}>
+          <Resume printable ref={componentRef} state={state} />
+        </div>
       </div>
     </div>
   );
 }
 
 export default ResumePreview;
+// <Resume printable={false} state={state}/>

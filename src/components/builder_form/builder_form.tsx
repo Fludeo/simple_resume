@@ -50,7 +50,7 @@ export function BuilderForm({
         areas={state.layout.areas}
         UpdateField={(mainSection:any) => UpdateMainSection(mainSection)}
       />
-      <div>
+      <div className="section-wrapper">
 
         {state.sections.map((section:ISection, index:number) => (
           <SectionBuilder
@@ -64,6 +64,8 @@ export function BuilderForm({
             areas={state.layout.areas}
           />
         ))}
+      </div>
+      <div className="builder-form__buttons-container">
         <button type="button" onClick={() => AddSectionToState()}>Add section</button>
       </div>
     </div>

@@ -4,12 +4,27 @@
 }
 
 
-.resume{
-    
-    --page-w:30vw;
+.printable-resume{
+    --page-w:200mm;
     width: var(--page-w);
     height: calc(var(--page-w)*var(--page-proportion-a4));
-    --padding-w:2vw;
+    --padding-w:10mm;
+    padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
+  
+    background-color: white;
+  
+    display: grid;
+   
+
+
+}
+
+.resume{
+    
+    --page-w:30rem;
+    width: var(--page-w);
+    height: calc(var(--page-w)*var(--page-proportion-a4));
+    --padding-w:3rem;
     padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
   
     background-color: white;
@@ -18,6 +33,8 @@
     
     
 }
+
+    
 
 
 

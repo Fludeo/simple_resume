@@ -29,14 +29,13 @@
     width: 1.5rem;
     height: 1.5rem;
     padding: 0.4rem;
-
     border-radius: .2rem;
-    color:#dedddf ;
+    color:white ;
     background-color: var(--color-primary);
 }
 
 .resume-preview__button-icon--hover:hover{
     background-color: var(--color-secondary);
-    color:#dedddf
+    color:white
 }
 

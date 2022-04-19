@@ -2,12 +2,23 @@
 
 .builder-form{
     background-color: white;
-    padding: 1.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     width: 40%;
     height: fit-content;
     min-height: 100vh;
     overflow: auto;
-    gap: 2rem;
+    
+}
+
+.builder-form__section-wrapper{
+    width: 100%;
+}
+.builder-form__buttons-container{
+    grid-area:add
+   
+}
+.builder-form__add-icon{
+   
 }

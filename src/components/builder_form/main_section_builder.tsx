@@ -74,6 +74,11 @@ export default function MainSectionBuilder({
             defaultValue={fields.area}
             onChange={(e) => UpdateField({ ...fields, area: `_${e.currentTarget.value}` })}
           >
+            <option
+              value=""
+            >
+              select
+            </option>
             {gridAreas.filter((area, index) => {
               if
               (gridAreas.indexOf(area) === index) { return area; } return null;

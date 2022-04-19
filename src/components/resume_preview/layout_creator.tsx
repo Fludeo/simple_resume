@@ -47,7 +47,7 @@ function calculateTemplate(col:number, row:number):any {
   let count:number = 0;
   for (let i = 0; i < row; i += 1) {
     for (let j = 0; j < col; j += 1) {
-      array.push(`area${count}`);
+      array.push(`area_${count}`);
       count += 1;
     }
   }
@@ -99,8 +99,6 @@ export default function LayoutCreator({
   const [copiedArea, setCopiedArea] = useState<string|null>(null);
   const CopyAreaName = (area:string) => {
     setCopiedArea(area);
-  };
-  const PasteAreaName = (area:string) => {
   };
 
   const updateArea = (index:number, value:string):void => {
