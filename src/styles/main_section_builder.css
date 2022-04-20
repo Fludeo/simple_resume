@@ -1,12 +1,12 @@
 .main-section-builder{
 
 display: grid;
-gap: 1rem;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 5rem 5rem 5rem;
+grid-template-rows: 4rem 4rem 4rem;
 grid-template-areas:"title area"  
                     "name lastname"
-                    "job buttons"
+                    "job buttons";
+column-gap: 4rem;
  
 
 }
@@ -31,12 +31,21 @@ grid-template-areas:"title area"
 }
 
 .main-section-builder__name-label{
-    display: block;
+    font-size: small;
+    color:var(--text-color-gray-primary);
 
 }
 
 .main-section-builder__name{
-    display: block;
+    background-color:var(--color-low-opacity-primary) ;
+    outline: 0;
+    border: 0;
+    padding: 0 0.5rem;
+    margin: 0.5rem 0;
+    border-bottom: 2px solid var(--color-primary) ; 
+    font-weight: bold;
+    border-radius: 0.2rem 0.2rem 0 0;
+    height: 2rem;
 
 }
 
@@ -54,10 +63,19 @@ grid-template-areas:"title area"
   }
 
 .main-section-builder__lastname-label{
-    display: block;
+    font-size: small;
+    color:var(--text-color-gray-primary);
 }
 .main-section-builder__lastname{
-    display: block;
+    background-color:var(--color-low-opacity-primary) ;
+    outline: 0;
+    border: 0;
+    padding: 0 0.5rem;
+    margin: 0.5rem 0;
+    border-bottom: 2px solid var(--color-primary) ; 
+    font-weight: bold;
+    border-radius: 0.2rem 0.2rem 0 0;
+    height: 2rem;
 
 }
 
@@ -75,10 +93,19 @@ grid-template-areas:"title area"
 }
 
 .main-section-builder__job-label{
-    display: block;
+    font-size: small;
+    color:var(--text-color-gray-primary);
 }
 .main-section-builder__job{
-    display: block;
+    background-color:var(--color-low-opacity-primary) ;
+    outline: 0;
+    border: 0;
+    padding: 0 0.5rem;
+    margin: 0.5rem 0;
+    border-bottom: 2px solid var(--color-primary) ; 
+    font-weight: bold;
+    border-radius: 0.2rem 0.2rem 0 0;
+    height: 2rem;
 
 }
 
@@ -87,18 +114,30 @@ grid-template-areas:"title area"
 
 
 .main-section-builder__area-container{
+    grid-area: area;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
     justify-content: right;
-    grid-area: area;
+    align-items: center;
+    gap: 0.7rem;
 }
-.main-section-builder__area-label{
-    display: block;
+.main-section-builder__area-icon{
+    color: var(--color-primary) ; 
+    height: 1.2rem;
+    width:  1.2rem;
+    padding: 0.5rem 0;
+    margin: 0;
 }
-.main-section-builder__area-select{
-    height: 1.5rem;
-    width: 4rem;
+.main-section-builder__area{
+    color:var(--text-color-gray-primary);
+    height: 2rem;
+    width: 5rem;
+    margin:0;
+    outline:0;
+    border: 0;
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-primary) ; 
+    font-size: 1rem;
 }
 
 

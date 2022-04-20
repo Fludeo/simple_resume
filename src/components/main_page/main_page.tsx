@@ -3,6 +3,7 @@
 import '../../styles/main_page.css';
 import React, { useReducer } from 'react';
 
+import { v4 as uuidv4 } from 'uuid';
 import { ResumePreview } from '../resume_preview/resume_preview';
 import { BuilderForm } from '../builder_form/builder_form';
 
@@ -14,9 +15,11 @@ const initialState = {
     area: '_area',
   },
   sections: [{
+    uuid: uuidv4(),
     area: '_area',
     title: 'Title',
     items: [{
+      uuid: uuidv4(),
       item: 'Item1',
       text: 'Subtext',
       location: '',

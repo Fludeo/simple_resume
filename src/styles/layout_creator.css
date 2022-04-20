@@ -9,13 +9,13 @@
 
   --page-proportion-a4: 1.4142;
    
-    --page-w:30vw;
+    --page-w:30rem;
     width: var(--page-w);
     height: calc(var(--page-w)*var(--page-proportion-a4));
-    --padding-w:2vw;
+    --padding-w:2rem;
     padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
-
-    background-color: rgb(81, 63, 133);
+   
+    background-color: #5b09b8;
 
     display: grid;
 
@@ -50,7 +50,7 @@
 }
 
 .area{
-  border: 2px solid;
+  border: 2px solid #272727;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +59,7 @@
   height: 100%;
 }
 .area__area-name {
-  width: 4rem;
+  width: 2rem;
 }
 
 .edit-box {

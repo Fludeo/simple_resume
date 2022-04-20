@@ -8,6 +8,7 @@ import React, {
   useEffect, useState,
 } from 'react';
 import { HiOutlineTemplate } from 'react-icons/hi';
+import { BsPrinter } from 'react-icons/bs';
 import { useReactToPrint } from 'react-to-print';
 import Resume from './resume';
 import LayoutCreator from './layout_creator';
@@ -33,7 +34,7 @@ export function ResumePreview({ state, UpdateLayout }:props) {
 
         {!editing && (
         <div className="resume-preview__top-section ">
-
+          <BsPrinter className="resume-preview__print-icon resume-preview__print-icon--hover" type="button" onClick={handlePrint} />
           <HiOutlineTemplate className="resume-preview__button-icon resume-preview__button-icon--hover" onClick={() => setEditing(!editing)}> </HiOutlineTemplate>
 
         </div>
@@ -47,13 +48,16 @@ export function ResumePreview({ state, UpdateLayout }:props) {
           />
         )
           : (
+
             <Resume printable={false} state={state} />
+
           ) }
-        <button type="button" onClick={handlePrint}>print</button>
+
         <div style={{ display: 'none' }}>
           <Resume printable ref={componentRef} state={state} />
         </div>
       </div>
+
     </div>
   );
 }

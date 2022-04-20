@@ -3,14 +3,12 @@
     display: flex;
     flex-direction: column;
     flex-grow:  0;
-    background-color: rgb(160, 196, 243);
 }
 .section__title-container{
 
 }
 
 .section__title{
-
 margin: 0;
 padding: 0;
 }
@@ -58,19 +56,21 @@ padding: 0;
 }
 
 .section-item__location{
- 
+ color: var(--text-color-gray-secondary);
+
  
 }
 
 
 
 .section-item__text-container{
-    
+  
     
 }
 .section-item__text{
+    color: var(--text-color-gray-primary);
     word-wrap: break-word;
-    font-size: small;
+
 }
 
 
@@ -78,5 +78,7 @@ padding: 0;
     
 }
 .section-item__date{
+    color: var(--text-color-gray-secondary);
+ 
 
 }

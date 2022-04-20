@@ -8,6 +8,7 @@ import React, {
   ForwardedRef, Ref, useEffect, useState,
 } from 'react';
 import '../../styles/resume.css';
+import { v4 as uuidv4 } from 'uuid';
 import MainSection from '../builder_form/resume_main_section';
 import ResumeSection from '../resume_preview/resume_section';
 
@@ -48,16 +49,16 @@ const Resume = React.forwardRef(({ state, printable }:props, ref:Ref<HTMLDivElem
       style={style}
     >
 
-      {[...new Set(state.layout.areas)].map((zone, index:number) => (
-        <div key={`${index}`} style={{ gridArea: `_${zone}`, overflow: 'hidden' }}>
+      {[...new Set(state.layout.areas)].map((zone) => (
+        <div key={uuidv4()} style={{ gridArea: `_${zone}`, overflow: 'hidden' }}>
 
           {`_${zone}` === `${state.mainSection.area}` && <MainSection mainSection={state.mainSection} />}
 
-          {state.sections.map((section:any, sectionIndex:number) => (
+          {state.sections.map((section:any) => (
             `_${zone}` === `${section.area}`
             && (
             <ResumeSection
-              key={sectionIndex}
+              key={section.uuid}
               section={section}
             />
             )

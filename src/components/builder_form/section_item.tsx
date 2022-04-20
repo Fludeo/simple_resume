@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { FiChevronDown, FiChevronUp, FiDelete } from 'react-icons/fi';
 import React, { useState } from 'react';
 import '../../styles/section_item.css';
 
@@ -16,13 +16,19 @@ type Iitem ={
   type props = {
       item:Iitem
       UpdateField:(payload:any)=>void
+      DeleteItem:(payload:any)=>void
   }
 
-function SectionItem({ item, UpdateField }:props) {
-  const [minimized, setMinimized] = useState(false);
+function SectionItem({ item, UpdateField, DeleteItem }:props) {
+  const [minimized, setMinimized] = useState<boolean>(true);
+  const [deleteIcon, setDeleteIcon] = useState<boolean>(false);
 
   return (minimized ? (
-    <div className="minimized-item__item-container">
+    <div
+      onMouseLeave={() => setDeleteIcon(false)}
+      onMouseEnter={() => setDeleteIcon(true)}
+      className="minimized-item__item-container"
+    >
       <input
         id="item"
         onChange={(e) => {
@@ -32,12 +38,26 @@ function SectionItem({ item, UpdateField }:props) {
         type="text"
         defaultValue={item.item}
       />
-      <FiChevronDown
-        onClick={() => setMinimized(false)}
-        className="section-builder-item__close-icon
-                           section-builder-item__close-icon--hover"
-      />
+      <div
+        className="section-builder-item__icon-container"
+      >
+        <FiChevronDown
+          onClick={() => {
+            setDeleteIcon(false);
+            setMinimized(false);
+          }}
+          className="section-builder-item__open-icon
+                    section-builder-item__open-icon--hover"
+        />
+        <FiDelete
+          onClick={() => DeleteItem(item)}
+          onMouseEnter={() => setDeleteIcon(true)}
+          visibility={deleteIcon ? 'visible' : 'hidden'}
+          className="section-builder-item__delete-icon
+                    section-builder-item__delete-icon--hover"
+        />
 
+      </div>
     </div>
   )
     : (
@@ -99,7 +119,7 @@ function SectionItem({ item, UpdateField }:props) {
             />
             <input
               onChange={(e) => {
-                UpdateField({ field: 'to', value: { ...item.dateRange, to: e.currentTarget.value } });
+                UpdateField({ field: 'dateRange', value: { ...item.dateRange, to: e.currentTarget.value } });
               }}
               className="section-builder-item__date-to"
               type="text"
@@ -112,7 +132,7 @@ function SectionItem({ item, UpdateField }:props) {
           <FiChevronUp
             onClick={() => setMinimized(true)}
             className="section-builder-item__close-icon
-                           section-builder-item__close-icon--hover"
+                       section-builder-item__close-icon--hover"
           />
         </div>
       </div>

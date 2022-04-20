@@ -3,7 +3,7 @@ import React from 'react';
 import '../../styles/section.css';
 
 type Iitem = {
-
+  uuid:string,
   item:string,
   text:string,
   location:string,
@@ -28,8 +28,8 @@ function ResumeSection({ section }:props) {
       </div>
 
       <div className="section__items-container">
-        {section.items.map((item:Iitem, index) => (
-          <div className="section-item" key={index}>
+        {section.items.map((item:Iitem) => (
+          <div className="section-item" key={item.uuid}>
             <div className="section-item__item-container">
               <h4 className="section-item__item">{item.item}</h4>
               {item.location !== '' && <p className="section-item__location">{item.location}</p>}

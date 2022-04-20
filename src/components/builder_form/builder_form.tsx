@@ -3,11 +3,14 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import React from 'react';
+import { FiPlus } from 'react-icons/fi';
 import '../../styles/builder_form.css';
+import { v4 as uuidv4 } from 'uuid';
 import MainSectionBuilder from './main_section_builder';
 import SectionBuilder from './section_builder';
 
 type ISection = {
+    uuid:string,
     title:string,
     items:Array<{
                   item:string,
@@ -29,10 +32,12 @@ export function BuilderForm({
 }:props) {
   function AddSectionToState():void {
     const newSections = [...state.sections, {
+      uuid: uuidv4(),
       title: 'Title',
       items: [{
+        uuid: uuidv4(),
         item: 'Item-1',
-        text: 'Subtext',
+        text: '',
         location: '',
         dateRange: {
           from: '',
@@ -54,7 +59,7 @@ export function BuilderForm({
 
         {state.sections.map((section:ISection, index:number) => (
           <SectionBuilder
-            key={`${index}`}
+            key={section.uuid}
             UpdateField={(payload:ISection) => {
               const updatedSections = [...state.sections];
               updatedSections[index] = payload;
@@ -66,7 +71,7 @@ export function BuilderForm({
         ))}
       </div>
       <div className="builder-form__buttons-container">
-        <button type="button" onClick={() => AddSectionToState()}>Add section</button>
+        <FiPlus className="builder-form__add-section-icon builder-form__add-section-icon--hover" type="button" onClick={() => AddSectionToState()}>Add section</FiPlus>
       </div>
     </div>
   );

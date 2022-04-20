@@ -5,6 +5,7 @@
 import { setgid } from 'process';
 import React, { useEffect, useReducer, useState } from 'react';
 import { BiCopyAlt, BiPaste } from 'react-icons/bi';
+import { v4 as uuidv4 } from 'uuid';
 import '../../styles/layout_creator.css';
 
 type IState ={
@@ -125,7 +126,7 @@ export default function LayoutCreator({
       >
         {state?.areas?.map((area: string, index: number) => (
           <div
-            key={`_${index}`}
+            key={uuidv4()}
             className="area"
             style={{ gridArea: `_${area}` }}
           >
@@ -135,7 +136,7 @@ export default function LayoutCreator({
             />
 
             <input
-              key={`_${index}1`}
+              key={uuidv4()}
               className="area__area-name"
               type="text"
               onChange={(e) => { updateArea(index, e.currentTarget.value); }}

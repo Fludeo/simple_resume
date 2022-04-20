@@ -2,7 +2,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { HiOutlineTemplate } from 'react-icons/hi';
 import '../../styles/main_section_builder.css';
+import { v4 as uuidv4 } from 'uuid';
 
 type props = {
   data:any,
@@ -34,66 +36,71 @@ export default function MainSectionBuilder({
       </div>
 
       <div className="main-section-builder__name-container">
-        <label className="main-section-builder__name-label">
+        <label htmlFor="name" className="main-section-builder__name-label">
           Name
-          <input
-            className="main-section-builder__name"
-            type="text"
-            defaultValue={fields.name != null ? fields.name : ''}
-            onChange={(e) => UpdateField({ ...fields, name: e.currentTarget.value })}
-          />
         </label>
+        <input
+          id="name"
+          className="main-section-builder__name"
+          type="text"
+          defaultValue={fields.name != null ? fields.name : ''}
+          onChange={(e) => UpdateField({ ...fields, name: e.currentTarget.value })}
+        />
+
       </div>
       <div className="main-section-builder__lastname-container">
-        <label className="main-section-builder__lastname-label">
+        <label htmlFor="lastname" className="main-section-builder__lastname-label">
           Lastname
-          <input
-            className="main-section-builder__lastname"
-            type="text"
-            defaultValue={fields.lastName != null ? fields.lastName : ''}
-            onChange={(e) => UpdateField({ ...fields, lastName: e.currentTarget.value })}
-          />
         </label>
+        <input
+          id="lastname"
+          className="main-section-builder__lastname"
+          type="text"
+          defaultValue={fields.lastName != null ? fields.lastName : ''}
+          onChange={(e) => UpdateField({ ...fields, lastName: e.currentTarget.value })}
+        />
+
       </div>
       <div className="main-section-builder__job-container">
-        <label className="main-section-builder__job-label">
+        <label htmlFor="job" className="main-section-builder__job-label">
           Job
-          <input
-            className="main-section-builder__job"
-            type="text"
-            defaultValue={fields.job != null ? fields.job : ''}
-            onChange={(e) => UpdateField({ ...fields, job: e.currentTarget.value })}
-          />
         </label>
+        <input
+          id="job"
+          className="main-section-builder__job"
+          type="text"
+          defaultValue={fields.job != null ? fields.job : ''}
+          onChange={(e) => UpdateField({ ...fields, job: e.currentTarget.value })}
+        />
+
       </div>
       <div className="main-section-builder__area-container">
-        <label className="main-section-builder__area-label">
-          Area
-          <select
-            className="main-section-builder__area-select"
-            defaultValue={fields.area}
-            onChange={(e) => UpdateField({ ...fields, area: `_${e.currentTarget.value}` })}
-          >
-            <option
-              value=""
-            >
-              select
-            </option>
-            {gridAreas.filter((area, index) => {
-              if
-              (gridAreas.indexOf(area) === index) { return area; } return null;
-            })
-              .map((area, index) => (
-                <option
-                  key={`${index}`}
-                  value={area}
-                >
-                  {area}
-                </option>
-              ))}
-          </select>
+        <HiOutlineTemplate className="main-section-builder__area-icon">  </HiOutlineTemplate>
 
-        </label>
+        <select
+          className="main-section-builder__area"
+          defaultValue={fields.area}
+          onChange={(e) => UpdateField({ ...fields, area: `_${e.currentTarget.value}` })}
+        >
+          <option
+            value=""
+          >
+            select
+          </option>
+          {gridAreas.filter((area, index) => {
+            if
+            (gridAreas.indexOf(area) === index) { return area; } return null;
+          })
+            .map((area, index) => (
+              <option
+                key={`${area}${index}`}
+                value={area}
+              >
+                {area}
+              </option>
+            ))}
+        </select>
+
       </div>
       <div className="main-section-builder__buttons-container" />
 

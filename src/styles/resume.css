@@ -5,30 +5,42 @@
 
 
 .printable-resume{
-    --page-w:200mm;
+    --page-w-print: 210mm;
     width: var(--page-w);
-    height: calc(var(--page-w)*var(--page-proportion-a4));
-    --padding-w:10mm;
-    padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
+    height: calc(var(--page-w-print)*var(--page-proportion-a4));
+    --padding-w-print:10mm;
+    padding:  var(--padding-w-print) calc(var(--padding-w-print)*var(--page-proportion-a4)) ;
   
     background-color: white;
-  
+    
     display: grid;
    
 
 
 }
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    .printable-resume  {
+        width: 21cm !important;
+        height: 29.7cm !important;
+        margin: 0;
+    }
+    
+}
 
 .resume{
     
-    --page-w:30rem;
+    --page-w:210mm;
     width: var(--page-w);
     height: calc(var(--page-w)*var(--page-proportion-a4));
-    --padding-w:3rem;
+    --padding-w:10mm;
     padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
-  
     background-color: white;
-  
+    transform: scale(0.6);
     display: grid;
     
     

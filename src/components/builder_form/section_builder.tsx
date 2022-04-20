@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../../styles/section_builder.css';
 import { FiEdit, FiPlusSquare } from 'react-icons/fi';
 import { HiOutlineTemplate } from 'react-icons/hi';
+import { v4 as uuidv4 } from 'uuid';
 import SectionItem from './section_item';
 
 type props = {
@@ -15,7 +16,7 @@ type props = {
 }
 
 type Iitem ={
-
+  uuid:string
   item:string,
   text:string,
   location:string,
@@ -39,6 +40,7 @@ export default function SectionBuilder({
   function AddItem() {
     const newItems = [...fields.items];
     newItems.push({
+      uuid: uuidv4(),
       item: 'New item',
       text: 'subtext',
       location: '',
@@ -102,11 +104,16 @@ export default function SectionBuilder({
 
         {fields.items.map((item:Iitem, index:number) => (
           <SectionItem
-            key={index}
+            key={item.uuid}
             item={item}
             UpdateField={(payload) => {
               const updatedItems = [...fields.items];
               updatedItems[index][payload.field as keyof Iitem] = payload.value;
+              UpdateField({ ...fields, items: updatedItems });
+            }}
+            DeleteItem={(payload) => {
+              const updatedItems = [...fields.items];
+              updatedItems.splice(updatedItems.indexOf(payload), 1);
               UpdateField({ ...fields, items: updatedItems });
             }}
           />

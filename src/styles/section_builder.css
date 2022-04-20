@@ -6,7 +6,7 @@ grid-template-areas: "section-title area"
                 "buttons buttons" ;
               
     row-gap: 1rem;
-    
+    margin-bottom: 1rem;
     }
 .section-builder__title-container {
         grid-area: section-title;
@@ -59,6 +59,14 @@ grid-template-areas: "section-title area"
   color: var(--color-secondary);
           
 }
+.section-builder__edit-icon::after {
+  content:'';
+    position:absolute;
+    top:-10px; bottom:-10px; 
+    left:-10px; right:-10px; 
+          
+}
+
 .section-builder__edit-icon--active{
   color: var(--color-secondary);
           
@@ -98,9 +106,6 @@ grid-template-areas: "section-title area"
     font-size: 1rem;
             
   }
-
-
-
 
 
 
