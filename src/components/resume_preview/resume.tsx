@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import '../../styles/resume.css';
 import { v4 as uuidv4 } from 'uuid';
-import MainSection from '../builder_form/resume_main_section';
+import MainSection from './resume_main_section';
 import ResumeSection from '../resume_preview/resume_section';
 
 type props = {
@@ -50,7 +50,7 @@ const Resume = React.forwardRef(({ state, printable }:props, ref:Ref<HTMLDivElem
     >
 
       {[...new Set(state.layout.areas)].map((zone) => (
-        <div key={uuidv4()} style={{ gridArea: `_${zone}`, overflow: 'hidden' }}>
+        <div className={printable ? '' : 'zone'} key={uuidv4()} style={{ gridArea: `_${zone}`, overflow: 'hidden' }}>
 
           {`_${zone}` === `${state.mainSection.area}` && <MainSection mainSection={state.mainSection} />}
 

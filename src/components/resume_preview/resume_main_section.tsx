@@ -17,8 +17,8 @@ function MainSection({
   return (
     <div style={{ gridArea: mainSection.area }}>
 
-      <h2>{`${mainSection.name} ${mainSection.lastName}`}</h2>
-      <h3>{mainSection.job}</h3>
+      <h1>{`${mainSection.name} ${mainSection.lastName}`}</h1>
+      <h2>{mainSection.job}</h2>
 
     </div>
   );

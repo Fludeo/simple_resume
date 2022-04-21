@@ -126,7 +126,7 @@ export default function LayoutCreator({
       >
         {state?.areas?.map((area: string, index: number) => (
           <div
-            key={uuidv4()}
+            key={index}
             className="area"
             style={{ gridArea: `_${area}` }}
           >
@@ -136,7 +136,7 @@ export default function LayoutCreator({
             />
 
             <input
-              key={uuidv4()}
+              key={index}
               className="area__area-name"
               type="text"
               onChange={(e) => { updateArea(index, e.currentTarget.value); }}

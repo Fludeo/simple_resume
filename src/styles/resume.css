@@ -51,9 +51,6 @@
 
 
 .zone{
-    border: 2px solid;
+    border: 1px solid;
     border-color: rgb(168, 168, 168);
-}
-.zone:hover{
-    background-color: brown;
 }
