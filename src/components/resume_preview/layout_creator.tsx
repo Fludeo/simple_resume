@@ -2,9 +2,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-array-index-key */
-import { setgid } from 'process';
+
 import React, { useEffect, useReducer, useState } from 'react';
-import { BiCopyAlt, BiPaste } from 'react-icons/bi';
+import { BiCopyAlt, BiUnite } from 'react-icons/bi';
+import { MdCancel, MdCheckCircle } from 'react-icons/md';
+
 import { v4 as uuidv4 } from 'uuid';
 import '../../styles/layout_creator.css';
 
@@ -98,7 +100,7 @@ export default function LayoutCreator({
 }:props) {
   const [state, dispatch] = useReducer(layoutCreatorReducer, {});
   const [copiedArea, setCopiedArea] = useState<string|null>(null);
-  const CopyAreaName = (area:string) => {
+  const CopyAreaName = (area:string|null) => {
     setCopiedArea(area);
   };
 
@@ -130,11 +132,20 @@ export default function LayoutCreator({
             className="area"
             style={{ gridArea: `_${area}` }}
           >
-            <BiCopyAlt
-              onClick={() => CopyAreaName(area)}
-              className={copiedArea === area ? 'area__copy-icon--active' : 'area__copy-icon area__copy-icon--hover'}
-            />
-
+            <div>
+              {(copiedArea === null || copiedArea === area) && (
+              <BiCopyAlt
+                onClick={() => ((copiedArea !== null) ? CopyAreaName(null) : CopyAreaName(area))}
+                className={copiedArea === area ? 'area__copy-icon--active' : 'area__copy-icon area__copy-icon--hover'}
+              />
+              )}
+              {(copiedArea !== null && copiedArea !== area) && (
+              <BiUnite
+                onMouseOver={() => copiedArea !== null && updateArea(index, copiedArea)}
+                className="area__paste-icon area__paste-icon--hover"
+              />
+              )}
+            </div>
             <input
               key={index}
               className="area__area-name"
@@ -142,19 +153,19 @@ export default function LayoutCreator({
               onChange={(e) => { updateArea(index, e.currentTarget.value); }}
               defaultValue={`${area}`}
             />
-            <BiPaste onClick={() => copiedArea !== null && updateArea(index, copiedArea)} className="area__paste-icon area__paste-icon--hover" />
+
           </div>
         ))}
       </div>
       <div className="edit-box">
-        <div className="inputs">
-          <p>columns</p>
-          <input onChange={(e) => dispatch({ type: 'UPDATE_COLUMNS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.columns} />
-          <p>rows</p>
-          <input onChange={(e) => dispatch({ type: 'UPDATE_ROWS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.rows} />
+        <div className="edit-box__input-container">
+          <p className="edit-box__label">Columns</p>
+          <input className="edit-box__input" onChange={(e) => dispatch({ type: 'UPDATE_COLUMNS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.columns} />
+          <p className="edit-box__label">Rows</p>
+          <input className="edit-box__input" onChange={(e) => dispatch({ type: 'UPDATE_ROWS', payload: Number(e.currentTarget.value) })} type="number" min={1} defaultValue={state?.rows} />
         </div>
-        <button type="button" onClick={() => { UpdateLayout(state); setEditing(false); }}>Save</button>
-        <button type="button" onClick={() => setEditing(false)}>Cancel</button>
+        <MdCheckCircle className="edit-box__save-icon edit-box__save-icon--hover" type="button" onClick={() => { UpdateLayout(state); setEditing(false); }} />
+        <MdCancel className="edit-box__cancel-icon edit-box__cancel-icon--hover" type="button" onClick={() => setEditing(false)}>Cancel</MdCancel>
       </div>
     </div>
   );

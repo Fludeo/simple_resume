@@ -4,9 +4,10 @@
     --color-secondary: #44abff;
     --color-low-opacity-secondary:#44abff41;
     --color-danger: #fa0865;
+    --color-succes: #8ccf34;
     --text-color-gray-primary: hsla(0, 0%, 0%, 0.87);
-    --text-color-gray-secondary: hsla(0, 0%, 0%, 0.6
-    );
+    --text-color-gray-secondary: hsla(0, 0%, 0%, 0.6);
+    --layout-creator-background-color:#5b09b8;
 
 }
 

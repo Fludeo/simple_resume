@@ -15,7 +15,7 @@
     --padding-w:2rem;
     padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
    
-    background-color: #5b09b8;
+    background-color: var(--layout-creator-background-color);
 
     display: grid;
 
@@ -25,27 +25,42 @@
 
 .area__copy-icon{
 
-  color: #272727;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.2rem;
+  border-radius: .2rem;
+  color: white;
+  background-color: var(--color-succes);
 
 }
 .area__copy-icon--hover:hover{
   
-  color: #fdfdfd;
+  background-color: var(--color-secondary);
 
 }
 .area__copy-icon--active{
-  
-  color: #fdfdfd;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.2rem;
+  border-radius: .2rem;
+  color: white;
+  background-color: var(--color-danger);
+
 
 }
 .area__paste-icon{
 
-  color: #272727;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.2rem;
+  border-radius: .2rem;
+  color:white ;
+  background-color: var(--color-secondary);
 
 }
 .area__paste-icon--hover:hover{
   
-  color: #fdfdfd;
+  
 
 }
 
@@ -68,34 +83,68 @@
   flex-direction: row;
   justify-content: right;
   align-items: center;
+ 
   gap: 0.5rem;
 }
 
-.edit-box .inputs{
+.edit-box__input-container{
   background-color: white;
   display: flex;
   justify-content: right;
   align-items: center;
   flex-direction: row;
+  border-radius: 0.2rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   height: 100%;
   gap:0.5rem
 }
-.edit-box .inputs input {
+.edit-box__input {
+  outline: 0;
+  border: 0;
+ 
+  font-weight: bold;
+  border-radius: 0.2rem 0.2rem 0 0;
+  height: 2rem;
 
- width: 2rem;
+ width: 1.5rem;
  height: 1rem;
  margin: 0;
 }
-.edit-box .inputs p {
+.edit-box__label {
+  color: var(--text-color-gray-primary);
+  font-weight: bold;
   margin: 0;
  }
-.edit-box button {
-  width: 4rem;
-  height: 2rem;
-  
+ .edit-box__save-icon{
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.4rem;
+  border-radius: .2rem;
+  color:white ;
+  background-color: var(--color-succes);
+
  }
+
+ .edit-box__save-icon--hover:hover{
+
+  background-color: var(--color-secondary);
+ }
+
+ .edit-box__cancel-icon{
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.4rem;
+  border-radius: .2rem;
+  color:white ;
+  background-color: var(--color-danger);
+
+ }
+ .edit-box__cancel-icon--hover:hover{
+
+  background-color: var(--color-secondary);
+ }
+
 
 
 
