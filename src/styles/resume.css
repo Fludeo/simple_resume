@@ -5,14 +5,12 @@
 
 
 .printable-resume{
-    --page-w-print: 210mm;
+    --page-w-print: 21cm;
     width: var(--page-w);
-    height: calc(var(--page-w-print)*var(--page-proportion-a4));
-    --padding-w-print:10mm;
-    padding:  var(--padding-w-print) calc(var(--padding-w-print)*var(--page-proportion-a4)) ;
-  
+    height: 29.7cm;
+    padding:  10mm ;
+    margin:0;
     background-color: white;
-    
     display: grid;
    
 
@@ -34,14 +32,14 @@
 
 .resume{
     
-    --page-w:210mm;
-    width: var(--page-w);
-    height: calc(var(--page-w)*var(--page-proportion-a4));
-    --padding-w:10mm;
-    padding:  var(--padding-w) calc(var(--padding-w)*var(--page-proportion-a4)) ;
+    width: 21cm;
+    height: 29.7cm;
+    padding:  10mm ;
+    margin:0;
     background-color: white;
     transform: scale(0.6);
     display: grid;
+  
     
     
 }
@@ -50,7 +48,3 @@
 
 
 
-.zone{
-    border: 1px solid;
-    border-color: rgb(168, 168, 168);
-}

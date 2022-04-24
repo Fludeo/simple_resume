@@ -15,7 +15,10 @@ function MainSection({
   mainSection,
 }:props) {
   return (
-    <div style={{ gridArea: mainSection.area }}>
+    <div style={{
+      gridArea: mainSection.area,
+    }}
+    >
 
       <h1>{`${mainSection.name} ${mainSection.lastName}`}</h1>
       <h2>{mainSection.job}</h2>

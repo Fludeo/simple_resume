@@ -8,6 +8,7 @@ import '../../styles/builder_form.css';
 import { v4 as uuidv4 } from 'uuid';
 import MainSectionBuilder from './main_section_builder';
 import SectionBuilder from './section_builder';
+import SectionBackgroundShapes from './section_shape_builder';
 
 type ISection = {
     uuid:string,
@@ -25,9 +26,11 @@ type props ={
   AddSection: (payload:Array<ISection>)=>any,
   UpdateSection:(payload:any)=>any,
   UpdateMainSection:(payload:any)=>any,
+  UpdateShapeSection: (payload:any)=>any
   state: any
 };
 export function BuilderForm({
+  UpdateShapeSection,
   UpdateSection, UpdateMainSection, AddSection, state,
 }:props) {
   function AddSectionToState():void {
@@ -53,10 +56,10 @@ export function BuilderForm({
       <MainSectionBuilder
         data={state.mainSection}
         areas={state.layout.areas}
-        UpdateField={(mainSection:any) => UpdateMainSection(mainSection)}
+        UpdateField={(mainSection:typeof state.mainSection) => UpdateMainSection(mainSection)}
       />
-      <div className="section-wrapper">
 
+      <div className="section-wrapper">
         {state.sections.map((section:ISection, index:number) => (
           <SectionBuilder
             key={section.uuid}
@@ -73,6 +76,11 @@ export function BuilderForm({
       <div className="builder-form__buttons-container">
         <FiPlus className="builder-form__add-section-icon builder-form__add-section-icon--hover" type="button" onClick={() => AddSectionToState()}>Add section</FiPlus>
       </div>
+      <SectionBackgroundShapes
+        data={state.backgroundShapes}
+        UpdateField={(payload: typeof state.backgroundShapes) => UpdateShapeSection(payload)}
+      />
+
     </div>
   );
 }

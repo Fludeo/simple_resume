@@ -14,6 +14,9 @@ const initialState = {
     job: 'Job',
     area: '_area',
   },
+  backgroundShapes: [{
+    uuid: uuidv4(), type: '', layer: 1, rotation: 0, scale: { x: 1, y: 1 }, position: { x: 0, y: 0 }, color: '#212121',
+  }],
   sections: [{
     uuid: uuidv4(),
     area: '_area',
@@ -40,6 +43,7 @@ const initialState = {
 type ActionType =
  |{ type:'ADD_SECTION', payload:any}
  |{ type:'UPDATE_MAIN_SECTION', payload:any}
+ |{ type:'UPDATE_SHAPE_SECTION', payload:any}
  |{ type: 'UPDATE_SECTION', payload:any}
  |{ type:'UPDATE_LAYOUT', payload:any}
 
@@ -51,8 +55,14 @@ const resumeReducer:React.Reducer<any, ActionType> = (state, action) => {
       console.log(newState);
       return newState;
     case 'UPDATE_MAIN_SECTION':
-      console.log(newState);
+
       newState = { ...state, mainSection: action.payload };
+      console.log(newState);
+      return newState;
+    case 'UPDATE_SHAPE_SECTION':
+
+      newState = { ...state, backgroundShapes: action.payload };
+      console.log(newState);
       return newState;
     case 'UPDATE_SECTION':
 
@@ -78,6 +88,7 @@ export function MainPage() {
         state={state}
         UpdateSection={((payload) => dispatch({ type: 'UPDATE_SECTION', payload }))}
         UpdateMainSection={((payload) => dispatch({ type: 'UPDATE_MAIN_SECTION', payload }))}
+        UpdateShapeSection={((payload) => dispatch({ type: 'UPDATE_SHAPE_SECTION', payload }))}
         AddSection={(payload) => dispatch({ type: 'ADD_SECTION', payload })}
       />
       <ResumePreview state={state} UpdateLayout={((payload) => dispatch({ type: 'UPDATE_LAYOUT', payload }))} />

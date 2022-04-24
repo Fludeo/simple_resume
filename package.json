@@ -10,6 +10,7 @@
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "react": "^18.1.0-next-df5d32f23-20220411",
+    "react-color": "^2.19.3",
     "react-dom": "^18.1.0-next-df5d32f23-20220411",
     "react-icons": "^4.3.1",
     "react-scripts": "5.0.0",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.44",
+    "@types/react-color": "^3.0.6",
     "@types/react-dom": "^17.0.15",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.18.0",

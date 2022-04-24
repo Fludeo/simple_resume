@@ -11,6 +11,7 @@ import '../../styles/resume.css';
 import { v4 as uuidv4 } from 'uuid';
 import MainSection from './resume_main_section';
 import ResumeSection from '../resume_preview/resume_section';
+import ResumeShape from './resume_shape';
 
 type props = {
   state:any
@@ -48,9 +49,15 @@ const Resume = React.forwardRef(({ state, printable }:props, ref:Ref<HTMLDivElem
       className={printable ? 'printable-resume' : 'resume'}
       style={style}
     >
+      {state.backgroundShapes.map((shape:any) => (
+        <ResumeShape
+          key={shape.uuid}
+          shape={shape}
+        />
+      ))}
 
       {[...new Set(state.layout.areas)].map((zone) => (
-        <div className={printable ? '' : 'zone'} key={uuidv4()} style={{ gridArea: `_${zone}`, overflow: 'hidden' }}>
+        <div className={printable ? '' : 'zone'} key={uuidv4()} style={{ gridArea: `_${zone}`, overflow: 'hidden', zIndex: 10 }}>
 
           {`_${zone}` === `${state.mainSection.area}` && <MainSection mainSection={state.mainSection} />}
 
@@ -65,6 +72,7 @@ const Resume = React.forwardRef(({ state, printable }:props, ref:Ref<HTMLDivElem
           ))}
         </div>
       ))}
+
     </div>
 
   );
